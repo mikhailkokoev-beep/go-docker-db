@@ -27,8 +27,8 @@ jobs:
   build-and-publish:
     name: Build and Publish to DockerHub
     needs: test-and-lint
-    if: github.ref_type == 'tag'
     runs-on: ubuntu-latest
+    if: ${{ startsWith(github.ref, 'refs/tags/') }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
